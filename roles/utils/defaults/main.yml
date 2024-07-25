@@ -1,0 +1,9 @@
+utils:
+  - git
+  - tar
+  - tree
+  - wget
+  - unzip
+  - rsync
+  - vim
+  - tig

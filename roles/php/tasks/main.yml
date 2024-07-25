@@ -1,0 +1,27 @@
+---
+- name: install dnf-utils
+  become: yes
+  dnf:
+    name: dnf-utils
+    state: latest
+
+- name: install php package group
+  become: yes
+  dnf:
+    name: '@php:remi-8.2'
+    state: present
+
+- name: install php packages
+  become: yes
+  dnf:
+    name: "{{ packages }}"
+    state: latest
+
+- name: config
+  become: yes
+  template:
+    src: php.ini.j2
+    dest: /etc/php.ini
+    owner: root
+    group: root
+    mode: 0644

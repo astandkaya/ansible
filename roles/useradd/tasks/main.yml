@@ -1,0 +1,26 @@
+---
+- name: add user
+  become: yes
+  user:
+    name: "{{ item }}"
+    create_home: yes
+    home: "/home/{{ item }}"
+  with_items: "{{ user_name }}"
+
+- name: make .ssh
+  become: yes
+  become_user: "{{ item }}"
+  file:
+    path: "/home/{{ item }}/.ssh"
+    state: directory
+    mode: '700'
+  with_items: "{{ user_name }}"
+
+- name: get authorized_keys
+  become: yes
+  become_user: "{{ item }}"
+  get_url:
+    url: "https://github.com/hamaco.keys"
+    dest: "/home/{{ item }}/.ssh/authorized_keys"
+    mode: '600'
+  with_items: "{{ user_name }}"

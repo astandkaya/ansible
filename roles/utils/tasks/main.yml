@@ -1,0 +1,6 @@
+---
+- name: install
+  become: yes
+  dnf:
+    name: "{{ utils }}"
+    state: latest

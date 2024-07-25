@@ -1,0 +1,13 @@
+---
+- name: import GPG key
+  rpm_key:
+    key: https://rpms.remirepo.net/RPM-GPG-KEY-remi2021
+    state: present
+
+- name: add repositories
+  become: yes
+  dnf:
+    name:
+      - epel-release
+      - http://rpms.famillecollet.com/enterprise/remi-release-9.rpm
+    state: latest

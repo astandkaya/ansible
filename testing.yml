@@ -1,0 +1,11 @@
+---
+- hosts: testing
+  roles:
+    - set_hostname
+    - dnf_update
+    - dnf_repository
+    - chrony
+    - sysstat
+    - utils
+    - useradd
+    - php

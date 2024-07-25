@@ -1,0 +1,13 @@
+---
+- name: install
+  become: yes
+  dnf:
+    name: sysstat
+    state: latest
+
+- name: enable
+  become: yes
+  systemd:
+    name: sysstat.service
+    state: restarted
+    enabled: yes

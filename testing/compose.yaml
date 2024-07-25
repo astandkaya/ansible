@@ -1,0 +1,20 @@
+services:
+  almalinux:
+    container_name: almalinux
+    build:
+      context: .
+      dockerfile: ./Dockerfiles/almalinux
+    tty: true
+    hostname: almalinux
+    privileged: true
+    command: /sbin/init
+
+  rockylinux:
+    container_name: rockylinux
+    build:
+      context: .
+      dockerfile: ./Dockerfiles/rockylinux
+    tty: true
+    hostname: rockylinux
+    privileged: true
+    command: /sbin/init
