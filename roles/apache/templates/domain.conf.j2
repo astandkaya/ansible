@@ -1,0 +1,7 @@
+<VirtualHost *:80>
+    ServerName {{ inventory_hostname }}
+    DocumentRoot /var/www/html/{{ inventory_hostname }}/current/public
+    
+    CustomLog logs/{{ inventory_hostname }}-access_log ltsv
+    ErrorLog logs/{{ inventory_hostname }}-error_log
+</VirtualHost>

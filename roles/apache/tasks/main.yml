@@ -1,0 +1,48 @@
+---
+- name: install
+  become: yes
+  dnf:
+    name: 
+      - httpd
+      - mod_ssl
+    state: latest
+
+- name: enable
+  become: yes
+  systemd:
+    name: httpd
+    state: restarted
+    enabled: yes
+
+- name: config common
+  become: yes
+  template:
+    src: httpd.conf.j2
+    dest: /etc/httpd/conf/httpd.conf
+    owner: root
+    group: root
+    mode: 0644
+
+- name: config additional
+  become: yes
+  template:
+    src: domain.conf.j2
+    dest: /etc/httpd/conf.d/{{ inventory_hostname }}.conf
+    owner: root
+    group: root
+    mode: 0644
+
+- name: make directory
+  become: yes
+  file:
+    path: /var/www/html/{{ inventory_hostname }}
+    state: directory
+    owner: deploy
+    group: deploy
+    mode: 0755
+
+- name: permission for log
+  become: yes
+  file:
+    path: /var/log/httpd
+    mode: 0755

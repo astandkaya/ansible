@@ -8,4 +8,5 @@
     - sysstat
     - util_packages
     - useradd
+    - apache
     - php
