@@ -5,6 +5,8 @@ services:
       context: .
       dockerfile: ./Dockerfiles/almalinux
     tty: true
+    ports:
+      - 8180:80
     hostname: almalinux
     privileged: true
     command: /sbin/init
@@ -15,6 +17,8 @@ services:
       context: .
       dockerfile: ./Dockerfiles/rockylinux
     tty: true
+    ports:
+      - 8181:80
     hostname: rockylinux
     privileged: true
     command: /sbin/init

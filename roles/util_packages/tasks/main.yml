@@ -2,5 +2,5 @@
 - name: install
   become: yes
   dnf:
-    name: "{{ utils }}"
+    name: "{{ packages }}"
     state: latest

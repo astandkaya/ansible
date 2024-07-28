@@ -6,6 +6,6 @@
     - dnf_repository
     - chrony
     - sysstat
-    - utils
+    - util_packages
     - useradd
     - php
